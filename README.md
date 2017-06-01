@@ -1,30 +1,24 @@
-# tarsier-input-webapi
+# tarsier-output-slack
 
-webapi input plugin for tarsier.
+slack input plugin for tarsier.
 
 
 ## install
 
 ```bash
-pip install tarsier-input-webapi
+pip install tarsier-output-slack
 ```
 
 ## configuration
 
 ```yaml
-in:
+out:
   type: webapi
-  url: https://test.com/api # required
-  method: get # default.
-  db: test # default
-  user: admin # default
-  field: "" # optional. witch field you want to check
-  basic_auth: # optional.
-   user: pass
-  params: # get/post/patch/put params
-    hoge: hoge
-    fuga: fuga
-  headers: # default
-    content-type: application/json
+  webhook_url: https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXX # required
+  channel: random # default
+  text: | # text that post slack channel
+      temperature {temperature}
 ```
 
+The text can embed `{}` values in the matched field.
+see https://docs.python.org/3.6/library/string.html#module-string.
